@@ -1,6 +1,6 @@
-package atomfinger.touuid.extension
+package com.atomfinger.touuid.extension
 
-import atomfinger.touuid.NumberOutOfBoundsException
+import com.atomfinger.touuid.NumberOutOfBoundsException
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Test
 

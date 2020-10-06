@@ -1,6 +1,6 @@
-package atomfinger.touuid.extension
+package com.atomfinger.touuid.extension
 
-import atomfinger.touuid.NumberOutOfBoundsException
+import com.atomfinger.touuid.NumberOutOfBoundsException
 import java.util.*
 
 private const val totalLength = 32
