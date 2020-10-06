@@ -29,3 +29,4 @@ target/
 .settings/
 .classpath
 .project
+.attach_pid*
