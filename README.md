@@ -14,36 +14,29 @@ UUID secondId = UUID.fromString("00000000-0000-0000-0000-000000000002");
 
 In tests we often like to use easy to read UUIDs, but there's no easy and clean way of writing these UUIDs in a repeatable fashion. Or, it wasn'nt, but not it is.
 
-## How toUUID works
+## toUUID with Java
 
-## How to use
+## toUUID with Kotlin
 
-### Generate a single UUID
-
-#### Kotlin
-
+### Generate based on an integers
 ```kotlin
-val id = 1.toUUID()
-println(id.toString())
-//00000000-0000-0000-0000-000000000001 
+import com.atomfinger.touuid.extension.toUUID
+
+fun printUUID() {
+    println(1.toUUID().toString())
+}
+//Output:
+//00000000-0000-0000-0000-000000000001
 ```
 
-#### Java
+### Generate from a list of integers
+```kotlin 
+import com.atomfinger.touuid.extension.toUUIDs
 
-```Java
-UUID id = TestUUID.fromInt(1);
-System.out.println(id);
-//00000000-0000-0000-0000-000000000001 
-```
-
-### Generate a list of UUIDs
-
-#### Kotlin
-
-```kotlin
-val uuids = listOf(1, 2, 3, 4, 5).toUUIDs()
-for (uuid in uuids)
-  println(uuid.toString())
+fun printUUIDs() {
+    listOf(1, 2, 3, 4, 5).toUUIDs().forEach { println(it.toString()) }
+}
+//Output:
 //00000000-0000-0000-0000-000000000001
 //00000000-0000-0000-0000-000000000002
 //00000000-0000-0000-0000-000000000003
@@ -51,11 +44,14 @@ for (uuid in uuids)
 //00000000-0000-0000-0000-000000000005
 ```
 
-#### Java
-```Java
-UUID uuids = TestUUID.fromInts(Arrays.asList(1, 2, 3, 4, 5));
-for (uuid in uuids)
-  System.out.println(uuid.toString());
+### Generate based on a range of integers
+```kotlin
+import com.atomfinger.touuid.extension.toUUIDs
+         
+fun printUUIDs() {
+    (1..5).toUUIDs().forEach { println(it.toString()) }
+}
+//Output:
 //00000000-0000-0000-0000-000000000001
 //00000000-0000-0000-0000-000000000002
 //00000000-0000-0000-0000-000000000003
@@ -63,24 +59,15 @@ for (uuid in uuids)
 //00000000-0000-0000-0000-000000000005
 ```
 
-## Generate a range of UUIDs
-```kotlin
-val uuids = (1...5).toUUIDs()
-for (uuid in uuids)
-  println(uuid.toString())
-//00000000-0000-0000-0000-000000000001
-//00000000-0000-0000-0000-000000000002
-//00000000-0000-0000-0000-000000000003
-//00000000-0000-0000-0000-000000000004
-//00000000-0000-0000-0000-000000000005
-```
+### Generate based on a sequence of integers 
 
-## Dynamically generate a set of UUIDs
+```kotlin 
+import com.atomfinger.touuid.extension.uuids
 
-```kotlin
-val uuids = UUID.take(5).toList()
-for (uuid in uuids)
-  println(uuid.toString())
+fun printUUIDs() {
+    uuids().take(5).forEach { println(it.toString()) }
+}
+//Output:
 //00000000-0000-0000-0000-000000000001
 //00000000-0000-0000-0000-000000000002
 //00000000-0000-0000-0000-000000000003
