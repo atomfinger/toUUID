@@ -23,7 +23,7 @@ fun Int.toUUID(): UUID =
 
 fun Collection<Int>.toUUIDs() = this.map { it.toUUID() }
 
-fun UUIDs() = sequence {
+fun uuids() = sequence {
     for ( i in (1..Int.MAX_VALUE))
         yield(i.toUUID())
 }
