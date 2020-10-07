@@ -33,7 +33,7 @@
             <version>1.4.10</version>
         </dependency>
         <dependency>
-            <groupId>com.atomfinger.touuid</groupId>
+            <groupId>io.github.atomfinger</groupId>
             <artifactId>atomfinger-touuid</artifactId>
             <version>${atomfinger.touuid.version}</version>
             <scope>test</scope>

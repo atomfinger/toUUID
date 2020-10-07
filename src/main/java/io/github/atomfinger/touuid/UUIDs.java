@@ -1,4 +1,4 @@
-package com.atomfinger.touuid;
+package io.github.atomfinger.touuid;
 
 import java.util.Arrays;
 import java.util.Collection;

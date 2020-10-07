@@ -1,8 +1,8 @@
 package com.atomfinger.touuid.kotlin.demo
 
-import com.atomfinger.touuid.toUUID
-import com.atomfinger.touuid.toUUIDs
-import com.atomfinger.touuid.uuids
+import io.github.atomfinger.touuid.toUUID
+import io.github.atomfinger.touuid.toUUIDs
+import io.github.atomfinger.touuid.uuids
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.util.UUID.fromString

@@ -54,7 +54,7 @@ Here's some more examples:
 
 ## .toUUID() examples in Java
 
-.toUUID() is first and foremost a Kotlin project. Still, one of the goals was to keep it free for any unnecessary dependencies, which is why Java users should use the [UUIDs class](src/main/java/com/atomfinger/touuid/UUIDs.java) to avoid having to deal with any extra dependencies.
+.toUUID() is first and foremost a Kotlin project. Still, one of the goals was to keep it free for any unnecessary dependencies, which is why Java users should use the [UUIDs class](src/main/java/io/github/atomfinger/touuid/UUIDs.java) to avoid having to deal with any extra dependencies.
 
 **UUID from a single integer:**
 
@@ -160,7 +160,7 @@ uuids.forEach { println(it.toString()) }
 
 Granted, a whole extra dependency for this feature might not be worth it for everyone. Do consider that this dependency should only ever be included into the test scope of your application; therefore it won't ever touch the running production code, so .toUUID() can be an accessible way of generating UUIDs.
 
-If you are still hesitant, feel free to copy the relevant code from the [UUIDs class](src/main/java/com/atomfinger/touuid/UUIDs.java) if you're a Java developer, or the [ToUUIDExtensions script](src/main/kotlin/com/atomfinger/touuid/ToUUIDExtensions.kt) if you are a Kotlin developer.
+If you are still hesitant, feel free to copy the relevant code from the [UUIDs class](src/main/java/io/github/atomfinger/touuid/UUIDs.java) if you're a Java developer, or the [ToUUIDExtensions script](src/main/kotlin/io/github/atomfinger/touuid/ToUUIDExtensions.kt) if you are a Kotlin developer.
 
 ## Demo projects
 Both Kotlin and Java has demo projects:

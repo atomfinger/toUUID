@@ -2,7 +2,7 @@ package com.atomfinger.touuid.java.demo;
 
 //import kotlin.ranges.IntRange;
 
-import com.atomfinger.touuid.UUIDs;
+import io.github.atomfinger.touuid.UUIDs;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

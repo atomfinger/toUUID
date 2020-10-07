@@ -1,4 +1,4 @@
-package com.atomfinger.touuid
+package io.github.atomfinger.touuid
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
