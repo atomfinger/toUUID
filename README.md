@@ -2,7 +2,7 @@
 
 ![Build](https://github.com/atomfinger/toUUID/workflows/Build/badge.svg)
 
-![](/images/logo.png | width=100)
+<img src="/images/logo.png" width="200">
 
 toUUID is a small, easy to use, library for generating UUIDs in unit and integration tests.
 
