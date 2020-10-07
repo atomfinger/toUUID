@@ -18,8 +18,8 @@ jobs:
       - name: Test kotlin-demo
         run: |
           cd demo/kotlin-demo
-          mvn clean install
+          mvn test
       - name: Test java-demo
         run: |
           cd demo/java-demo
-          mvn clean install
+          mvn test
