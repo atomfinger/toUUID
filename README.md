@@ -2,7 +2,7 @@
 
 <img src="/images/logo.png" width="350">
 
-.toUUID() is a tiny library for quickly generating UUIDs for unit and integration tests in both Java and Kotlin.
+.toUUID() is a tiny library for quickly generating UUIDs in automated tests for Java and Kotlin.
 
 ## Why .toUUID()
 
