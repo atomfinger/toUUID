@@ -17,7 +17,7 @@
         <kotlin.compiler.jvmTarget>1.8</kotlin.compiler.jvmTarget>
         <maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version>
         <junit.jupiter.version>5.7.0</junit.jupiter.version>
-        <atomfinger.touuid.version>1.0.0</atomfinger.touuid.version>
+        <atomfinger.touuid.version>0.0.1</atomfinger.touuid.version>
     </properties>
 
     <dependencies>

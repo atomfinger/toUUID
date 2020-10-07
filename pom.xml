@@ -6,7 +6,7 @@
 
     <groupId>com.atomfinger.touuid</groupId>
     <artifactId>atomfinger-touuid</artifactId>
-    <version>1.0.0</version>
+    <version>0.0.1</version>
 
     <properties>
         <kotlin.version>1.4.10</kotlin.version>
