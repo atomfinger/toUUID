@@ -1,4 +1,4 @@
-name: CI
+  name: CI
 
 on: [ push ]
 
@@ -19,6 +19,6 @@ jobs:
           cd demo/kotlin-demo
           mvn clean install
       - name: Test java-demo
-          run: |
+        run: |
           cd demo/java-demo
           mvn clean install
