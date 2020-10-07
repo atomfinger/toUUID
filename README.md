@@ -4,7 +4,7 @@
 
 .toUUID() is a tiny library for quickly generating UUIDs in automated tests for Java and Kotlin.
 
-## The problem .toUUID() tries to solve
+## Why .toUUID()?
 
 Developers care about clean code, and automated tests are no exceptions. We should apply the same professional attitudes to our automated tests as we do our production code.
 One of the commonly accepted principles is that unit tests should be easy to read and understand. Having UUIDs with hardcoded values such as `1b1d3a74-748a-4394-a9fb-88145de16d31` breaks the flow for the reader and makes the test harder to understand the code.
