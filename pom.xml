@@ -8,6 +8,8 @@
     <artifactId>atomfinger-touuid</artifactId>
     <version>0.0.1</version>
 
+    <packaging>jar</packaging>
+
     <properties>
         <kotlin.version>1.4.10</kotlin.version>
         <maven.surefire.plugin.version>2.22.0</maven.surefire.plugin.version>
