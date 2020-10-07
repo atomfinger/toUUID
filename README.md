@@ -151,7 +151,7 @@ uuids.forEach { println(it.toString()) }
 
 Granted, a whole extra dependency for this feature might not be worth it for everyone. Do consider that this dependency should only ever be included into the test scope of your application; therefore it won't ever touch the running production code, so .toUUID() can be an accessible way of generating UUIDs.
 
-If you are still hesitant, feel free to code the relevant code from the [UUIDs class](src/main/java/com/atomfinger/touuid/UUIDs.java) if you're a Java developer, or the [ToUUIDExtensions script](src/main/kotlin/com/atomfinger/touuid/ToUUIDExtensions.kt) if you are a Kotlin developer.
+If you are still hesitant, feel free to copy the relevant code from the [UUIDs class](src/main/java/com/atomfinger/touuid/UUIDs.java) if you're a Java developer, or the [ToUUIDExtensions script](src/main/kotlin/com/atomfinger/touuid/ToUUIDExtensions.kt) if you are a Kotlin developer.
 
 ## Contact
 
