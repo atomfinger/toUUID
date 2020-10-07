@@ -10,7 +10,7 @@
 - [.toUUID() examples in Kotlin](#touuid-examples-in-kotlin)
 - [Why a whole library?](#why-a-whole-library)
 - [Demo projects](#demo-projects)
-- [How to build .toUUID()](#how-to-build-touuid)
+- [How to build](#how-to-build)
 - [Contact](#contact)
 
 ## Why .toUUID()?
@@ -45,12 +45,12 @@ turns into the UUID:
 Here's some more examples:  
 |Number input | UUID output |
 |:---:|:---|
-|`2`|`00000000-0000-0000-0000-000000000002`|
-|`5`|`00000000-0000-0000-0000-000000000005`|
-|`10`|`00000000-0000-0000-0000-000000000010`|
-|`55`|`00000000-0000-0000-0000-000000000055`|
-|`100`|`00000000-0000-0000-0000-000000000100`|
-|`100000`|`00000000-0000-0000-0000-000000100000`|
+|2|`00000000-0000-0000-0000-000000000002`|
+|5|`00000000-0000-0000-0000-000000000005`|
+|10|`00000000-0000-0000-0000-000000000010`|
+|55|`00000000-0000-0000-0000-000000000055`|
+|100|`00000000-0000-0000-0000-000000000100`|
+|100000|`00000000-0000-0000-0000-000000100000`|
 
 ## .toUUID() examples in Java
 
@@ -167,7 +167,7 @@ Both Kotlin and Java has demo projects:
 * [Kotlin demo project](demo/kotlin-demo/)
 * [Java demo project](demo/java-demo/)
 
-## How to build .toUUID()
+## How to build
 
 .toUUID is a standard Maven application:
 1. Clone project
