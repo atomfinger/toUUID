@@ -7,8 +7,32 @@
     <groupId>io.github.atomfinger</groupId>
     <artifactId>atomfinger-touuid</artifactId>
     <version>0.0.1</version>
-
     <packaging>jar</packaging>
+
+    <name>toUUID</name>
+    <description>Simple library for generating UUIDs during automated testing</description>
+    <url>https://github.com/atomfinger/toUUID</url>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>John Mikael Gundersen</name>
+            <email>john@jmgundersen.com</email>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/atomfinger/toUUID.git</connection>
+        <developerConnection>scm:git:ssh://github.com:atomfinger/toUUID.git</developerConnection>
+        <url>https://github.com/atomfinger/toUUID</url>
+    </scm>
 
     <properties>
         <kotlin.version>1.4.10</kotlin.version>
