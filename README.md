@@ -4,6 +4,15 @@
 
 .toUUID() is a tiny library for quickly generating UUIDs in automated tests for Java and Kotlin.
 
+- [Why .toUUID()?](#why-touuid)
+- [How .toUUID() works](#how-touuid-works)
+- [.toUUID() examples in Java](#touuid-examples-in-java)
+- [.toUUID() examples in Kotlin](#touuid-examples-in-kotlin)
+- [Why a whole library?](#why-a-whole-library)
+- [Demo projects](#demo-projects)
+- [How to build .toUUID()](#how-to-build-touuid)
+- [Contact](#contact)
+
 ## Why .toUUID()?
 
 Developers care about clean code, and automated tests are no exceptions. We should apply the same professional attitudes to our automated tests as we do our production code.
@@ -153,6 +162,21 @@ Granted, a whole extra dependency for this feature might not be worth it for eve
 
 If you are still hesitant, feel free to copy the relevant code from the [UUIDs class](src/main/java/com/atomfinger/touuid/UUIDs.java) if you're a Java developer, or the [ToUUIDExtensions script](src/main/kotlin/com/atomfinger/touuid/ToUUIDExtensions.kt) if you are a Kotlin developer.
 
+## Demo projects
+Both Kotlin and Java has demo projects:
+* [Kotlin demo project](demo/kotlin-demo/)
+* [Java demo project](demo/java-demo/)
+
+## How to build .toUUID()
+
+.toUUID is a standard Maven application:
+1. Clone project
+1. Run `mvn clean install` in the project folder
+
+Requirements:
+ - Java 1.8 or higher
+ - the Kotlin compiler 
+
 ## Contact
 
-you can contact me through my [website](https://jmgundersen.com) or the social links found on said website.
+you can contact me through my [website](https://jmgundersen.com) or the social links found on said website. Don't hesitate to ask if there are any questions :)
