@@ -20,5 +20,5 @@ jobs:
           mvn clean install
       - name: Test java-demo
           run: |
-            cd demo/java-demo
-            mvn clean install
+          cd demo/java-demo
+          mvn clean install
