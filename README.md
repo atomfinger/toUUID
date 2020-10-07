@@ -9,7 +9,7 @@
 
 ## How .toUUID() works
 
-## .toUUID() with Java
+## .toUUID() examples in Java
 
 .toUUID() library was written in Kotlin, but one of the goals was to keep it free for any unnecessary dependencies, which is why Java users should use the [UUIDs class](src/main/java/com/atomfinger/touuid/UUIDs.java).
 
@@ -61,7 +61,7 @@ uuids.forEach((it) -> System.out.println(it.toString()));
 //00000000-0000-0000-0000-000000000005
 ```
 
-## .toUUID() with Kotlin
+## .toUUID() examples in Kotlin
 The kotlin implementation uses extension functions to make UUID creation prettier and easier. 
 
 **Generate based on an integers:**
