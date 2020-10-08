@@ -5,8 +5,6 @@ import java.util.*
 private const val totalLength = 12
 private const val paddingCharacter = '0'
 
-private fun generateUUIDString(i: Int) =
-    "00000000-0000-0000-0000-${i.toString().padStart(totalLength, paddingCharacter)}"
 
 /**
  * Converts the extended integer to a UUID
@@ -24,7 +22,7 @@ private fun generateUUIDString(i: Int) =
  *
  * @return Converted UUID
  */
-fun Int.toUUID(): UUID = UUID.fromString(generateUUIDString(maxOf(this, 0)))
+fun Int.toUUID(): UUID = UUIDs.fromInt(this)
 
 /**
  * Converts a collection of integers to a list of UUID
@@ -48,8 +46,7 @@ fun Collection<Int>.toUUIDs(): List<UUID> = this.map { it.toUUID() }
  *
  */
 fun uuids() = sequence {
-    for (i in (1..Int.MAX_VALUE))
-        yield(i.toUUID())
+    (1..Int.MAX_VALUE).forEach { i -> yield(i.toUUID()) }
 }
 
 /**
@@ -65,4 +62,3 @@ fun uuids() = sequence {
  *  @return List of UUIDs
  */
 fun IntRange.toUUIDs(): List<UUID> = this.toList().toUUIDs()
-
