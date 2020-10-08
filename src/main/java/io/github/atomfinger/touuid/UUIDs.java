@@ -71,10 +71,7 @@ public class UUIDs {
     }
 
     private static UUID toUUID(Integer integer) {
-        return UUID.fromString("00000000-0000-0000-0000-" + getUUIDStringPart(Math.max(integer, 0)));
-    }
-
-    private static String getUUIDStringPart(Integer integer) {
-        return ("000000000000" + integer.toString()).substring(integer.toString().length());
+        long leastSignificantBits = Long.parseLong(Integer.toString(Math.max(integer, 0)), 16) & 281474976710655L;
+        return new UUID(0, leastSignificantBits);
     }
 }
