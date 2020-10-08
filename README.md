@@ -8,7 +8,6 @@
 - [How .toUUID() works](#how-touuid-works)
 - [.toUUID() examples in Java](#touuid-examples-in-java)
 - [.toUUID() examples in Kotlin](#touuid-examples-in-kotlin)
-- [Why a whole library?](#why-a-whole-library)
 - [Demo projects](#demo-projects)
 - [How to build](#how-to-build)
 - [Contact](#contact)
@@ -155,12 +154,6 @@ uuids.forEach { println(it.toString()) }
 //00000000-0000-0000-0000-000000000004
 //00000000-0000-0000-0000-000000000005
 ```
-
-## Why a whole library?
-
-Granted, a whole extra dependency for this feature might not be worth it for everyone. Do consider that this dependency should only ever be included into the test scope of your application; therefore it won't ever touch the running production code, so .toUUID() can be an accessible way of generating UUIDs.
-
-If you are still hesitant, feel free to copy the relevant code from the [UUIDs class](src/main/java/io/github/atomfinger/touuid/UUIDs.java) if you're a Java developer, or the [ToUUIDExtensions script](src/main/kotlin/io/github/atomfinger/touuid/ToUUIDExtensions.kt) if you are a Kotlin developer.
 
 ## Demo projects
 Both Kotlin and Java has demo projects:
