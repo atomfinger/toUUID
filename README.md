@@ -16,7 +16,7 @@ _A tiny library for quickly generating UUIDs in automated tests for Java and Kot
   - [Java](#java)
   - [Kotlin](#kotlin)
 - [Why .toUUID()?](#why-touuid)
-  - [How .toUUID() works](#how-touuid-works)
+- [How .toUUID() works](#how-touuid-works)
 - [Demo projects](#demo-projects)
 - [How to build](#how-to-build)
 - [Contact](#contact)
@@ -178,7 +178,7 @@ The issue with generating UUIDs this way is:
 
 .toUUID() attempts to mitigate this problem by being able to generate simple UUIDs based on integers.
 
-## How .toUUID() works
+# How .toUUID() works
 
 .toUUID() takes the integer and puts it at the back of the UUID. Which is why the number:  
 `1`  
