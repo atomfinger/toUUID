@@ -4,7 +4,7 @@
 ![Main CI](https://github.com/atomfinger/toUUID/workflows/Main%20CI/badge.svg)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.atomfinger/atomfinger-touuid/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.atomfinger/atomfinger-touuid)
 
-_A tiny library for quickly generating UUIDs in automated tests for Java and Kotlin._
+_A tiny library for generating UUIDs in automated tests for Java and Kotlin_
 
 </div>
 
