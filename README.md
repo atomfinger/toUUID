@@ -1,10 +1,9 @@
+<img src="/images/logo.png" width="350">
+
 ![Github CI Status](https://github.com/atomfinger/toUUID/workflows/Main%20build/badge.svg)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.atomfinger/atomfinger-touuid/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.atomfinger/atomfinger-touuid)
 
-
-<img src="/images/logo.png" width="350">
-
-A tiny library for quickly generating UUIDs in automated tests for Java and Kotlin.
+_A tiny library for quickly generating UUIDs in automated tests for Java and Kotlin._
 
 - [Install](#install)
 - [Examples](#examples)
