@@ -29,9 +29,9 @@ jobs:
         run: mvn -B versions:set -DnewVersion=${{ github.event.release.tag_name }} -DgenerateBackupPoms=false
 
       - name: Release Maven package
-          uses: samuelmeuli/action-maven-publish@v1
-          with:
-            gpg_private_key: ${{ secrets.OSSRH_GPG_SECRET_KEY }}
-            gpg_passphrase: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
-            nexus_username: ${{ secrets.NEXUS_USERNAME }}
-            nexus_password: ${{ secrets.NEXUS_PASSWORD }}
+        uses: samuelmeuli/action-maven-publish@v1
+        with:
+          gpg_private_key: ${{ secrets.OSSRH_GPG_SECRET_KEY }}
+          gpg_passphrase: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
+          nexus_username: ${{ secrets.NEXUS_USERNAME }}
+          nexus_password: ${{ secrets.NEXUS_PASSWORD }}
