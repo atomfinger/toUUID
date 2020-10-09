@@ -5,10 +5,9 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.atomfinger/atomfinger-touuid/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.atomfinger/atomfinger-touuid)
 
 _A tiny library for quickly generating UUIDs in automated tests for Java and Kotlin._
------
+
 </div>
 
----
 <br/>
 
  Table of content:
