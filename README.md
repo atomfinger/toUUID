@@ -2,7 +2,7 @@
 <img src="/images/logo-medium.png" width="400">
 
 ![Main CI](https://github.com/atomfinger/toUUID/workflows/Main%20CI/badge.svg)
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.atomfinger/atomfinger-touuid?style=plastic)](https://search.maven.org/artifact/io.github.atomfinger/atomfinger-touuid/1.0.0/jar)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.atomfinger/atomfinger-touuid?color=dark-green&logoHeight=50)](https://search.maven.org/artifact/io.github.atomfinger/atomfinger-touuid/1.0.0/jar)
 
 
 
