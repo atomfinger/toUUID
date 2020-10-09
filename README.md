@@ -1,5 +1,5 @@
 <div align="center">
-<img src="/images/logo.png" width="400">
+<img src="/images/logo-medium.png" width="400">
 
 ![Github CI Status](https://github.com/atomfinger/toUUID/workflows/Main%20build/badge.svg)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.atomfinger/atomfinger-touuid/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.atomfinger/atomfinger-touuid)
