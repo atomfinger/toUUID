@@ -22,7 +22,7 @@ private const val paddingCharacter = '0'
  *
  * @return Converted UUID
  */
-fun Int.toUUID(): UUID = UUIDs.fromInt(this)
+fun Int.toUUID(): UUID = UUIDs.toUUID(this)
 
 /**
  * Converts a collection of integers to a list of UUID

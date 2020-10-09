@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
+import static io.github.atomfinger.touuid.UUIDs.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class IntegerToUUIDTest {
@@ -18,7 +19,7 @@ class IntegerToUUIDTest {
     @DisplayName("How to generate an UUID based on a single Integer")
     public void test_single_integer() {
         UUID expected = UUID.fromString("00000000-0000-0000-0000-000000000001");
-        UUID actual = UUIDs.fromInt(1);
+        UUID actual = toUUID(1);
         assertEquals(expected, actual);
     }
 
@@ -26,7 +27,7 @@ class IntegerToUUIDTest {
     @DisplayName("How to generate a list of UUIDs from a list of Integers")
     public void test_from_list_of_integers() {
         List<UUID> expected = getUuidExpectedResults();
-        List<UUID> actual = UUIDs.fromInts(Arrays.asList(1, 2, 3, 4, 5));
+        List<UUID> actual = toUUIDs(Arrays.asList(1, 2, 3, 4, 5));
         assertEquals(expected, actual);
     }
 
@@ -34,7 +35,7 @@ class IntegerToUUIDTest {
     @DisplayName("How to generate a list of UUIDs through varargs")
     public void test_from_integer_varargs() {
         List<UUID> expected = getUuidExpectedResults();
-        List<UUID> actual = UUIDs.fromInts(1, 2, 3, 4, 5);
+        List<UUID> actual = toUUIDs(1, 2, 3, 4, 5);
         assertEquals(expected, actual);
     }
 
@@ -42,7 +43,7 @@ class IntegerToUUIDTest {
     @DisplayName("How to generate a list of UUIDs based on a range of Integers")
     public void test_range_of_integers() {
         List<UUID> expected = getUuidExpectedResults();
-        List<UUID> actual = UUIDs.fromRange(1, 5);
+        List<UUID> actual = toUUIDsFromRange(1, 5);
         assertEquals(expected, actual);
     }
 
