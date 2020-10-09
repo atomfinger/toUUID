@@ -58,7 +58,7 @@ Here's some more examples:
 **UUID from a single integer:**
 
 ```java
-UUID uuid = UUIDs.fromInt(1);
+UUID uuid = UUIDs.toUUID(1);
 System.out.println(uuid.toString());
 //Output:
 //00000000-0000-0000-0000-000000000001
@@ -67,7 +67,7 @@ System.out.println(uuid.toString());
 **UUID from a list of integers:**
 
 ```java
-List<UUID> uuids = UUIDs.fromInts(Arrays.asList(1, 2, 3, 4, 5));
+List<UUID> uuids = UUIDs.toUUIDs(Arrays.asList(1, 2, 3, 4, 5));
 uuids.forEach((it) -> System.out.println(it.toString()));
 //Output:
 //00000000-0000-0000-0000-000000000001
@@ -80,7 +80,7 @@ uuids.forEach((it) -> System.out.println(it.toString()));
 **UUID from varargs:**
 
 ```java
-List<UUID> uuids = UUIDs.fromInts(1, 2, 3, 4, 5);
+List<UUID> uuids = UUIDs.toUUIDs(1, 2, 3, 4, 5);
 uuids.forEach((it) -> System.out.println(it.toString()));
 //Output:
 //00000000-0000-0000-0000-000000000001
@@ -93,7 +93,7 @@ uuids.forEach((it) -> System.out.println(it.toString()));
 **UUID from range of integers:**
 
 ```Java
-List<UUID> uuids = UUIDs.fromRange(1, 5);
+List<UUID> uuids = UUIDs.toUUIDsFromRange(1, 5);
 uuids.forEach((it) -> System.out.println(it.toString()));
 //Output:
 //00000000-0000-0000-0000-000000000001

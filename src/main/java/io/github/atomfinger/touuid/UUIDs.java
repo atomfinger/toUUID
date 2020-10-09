@@ -23,11 +23,12 @@ public class UUIDs {
      * Example:
      * UUIDs.fromInt(1);
      *
-     * @param positiveNumber: The int to convert
+     * @param number: The int to convert
      * @return the generated UUID
      */
-    public static UUID fromInt(int positiveNumber) {
-        return toUUID(positiveNumber);
+    public static UUID toUUID(int number) {
+        long leastSignificantBits = Long.parseLong(Integer.toString(Math.max(number, 0)), 16) & 281474976710655L;
+        return new UUID(0, leastSignificantBits);
     }
 
     /**
@@ -39,7 +40,7 @@ public class UUIDs {
      * @param positiveNumbers: The numbers to convert
      * @return List of generated UUIDs
      */
-    public static List<UUID> fromInts(int... positiveNumbers) {
+    public static List<UUID> toUUIDs(int... positiveNumbers) {
         return Arrays.stream(positiveNumbers).mapToObj(UUIDs::toUUID).collect(Collectors.toList());
     }
 
@@ -52,7 +53,7 @@ public class UUIDs {
      * @param integers: The numbers to convert
      * @return List of generated UUIDs
      */
-    public static List<UUID> fromInts(Collection<Integer> integers) {
+    public static List<UUID> toUUIDs(Collection<Integer> integers) {
         return integers.stream().map(UUIDs::toUUID).collect(Collectors.toList());
     }
 
@@ -66,12 +67,7 @@ public class UUIDs {
      * @param endInclusive:   End of range
      * @return List of generated UUIDs
      */
-    public static List<UUID> fromRange(int startInclusive, int endInclusive) {
+    public static List<UUID> toUUIDsFromRange(int startInclusive, int endInclusive) {
         return IntStream.rangeClosed(startInclusive, endInclusive).mapToObj(UUIDs::toUUID).collect(Collectors.toList());
-    }
-
-    private static UUID toUUID(Integer integer) {
-        long leastSignificantBits = Long.parseLong(Integer.toString(Math.max(integer, 0)), 16) & 281474976710655L;
-        return new UUID(0, leastSignificantBits);
     }
 }
