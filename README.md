@@ -10,7 +10,7 @@ _A tiny library for quickly generating UUIDs in automated tests for Java and Kot
 
 <br/>
 
- Table of content:
+ Table of contents:
 - [Install](#install)
 - [Examples](#examples)
   - [Java](#java)
