@@ -1,7 +1,8 @@
-name: Publish
+name: Main build
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+      - main
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -10,17 +11,24 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: 1.8
+
       - name: Running tests
         run: mvn clean install
+
       - name: Test kotlin-demo
         run: |
           cd demo/kotlin-demo
           mvn test
+
       - name: Test java-demo
         run: |
           cd demo/java-demo
           mvn test
-      - name: Publish package
-        run: mvn -B deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Release snapshot
+        uses: samuelmeuli/action-maven-publish@v1
+        with:
+          gpg_private_key: ${{ secrets.OSSRH_GPG_SECRET_KEY }}
+          gpg_passphrase: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
+          nexus_username: ${{ secrets.NEXUS_USERNAME }}
+          nexus_password: ${{ secrets.NEXUS_PASSWORD }}
