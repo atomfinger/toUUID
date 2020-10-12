@@ -181,7 +181,7 @@ The issue with generating UUIDs this way is:
 
 ## :warning: Never use .toUUID() in production code :warning:
 
-.toUUID() is not a replacement for how one generates UUIDs in production code. There are a [few versions of UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Versions) which all have different algorithms attached to them, and .toUUID() bypasses all that. While .toUUID() generates technically valid UUIDs, .toUUID() does not generate random UUIDs (even if a random integer is passed to it).
+.toUUID() is not a replacement for how one normally generates UUIDs in production code. There are a [few versions of UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Versions) which all have different algorithms attached to them, and this library bypasses all that. While .toUUID() generates technically valid UUIDs it does not create a UUID which is suitable for production (even if a random number is passed).
 
 .toUUID() is to be used in automated testing or to generate a repeatable set of human-readable UUIDs.
 
