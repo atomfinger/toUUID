@@ -4,8 +4,6 @@
 ![Main CI](https://github.com/atomfinger/toUUID/workflows/Main%20CI/badge.svg)
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.atomfinger/atomfinger-touuid?color=dark-green&logoHeight=50)](https://search.maven.org/artifact/io.github.atomfinger/atomfinger-touuid/1.0.0/jar)
 
-
-
 _A tiny library for generating UUIDs in automated tests for Java and Kotlin_
 
 </div>
@@ -18,6 +16,7 @@ _A tiny library for generating UUIDs in automated tests for Java and Kotlin_
   - [Java](#java)
   - [Kotlin](#kotlin)
 - [Why .toUUID()?](#why-touuid)
+  - [:warning: Never use .toUUID() in production code :warning:](#warning-never-use-touuid-in-production-code-warning)
 - [How .toUUID() works](#how-touuid-works)
 - [Demo projects](#demo-projects)
 - [How to build](#how-to-build)
@@ -179,6 +178,12 @@ The issue with generating UUIDs this way is:
 - It is tedious generating more than one UUID
 
 .toUUID() attempts to mitigate this problem by being able to generate simple UUIDs based on integers.
+
+## :warning: Never use .toUUID() in production code :warning:
+
+.toUUID() is not a replacement for how one normally generates UUIDs in production code. There are a [few versions of UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Versions) which all have different algorithms attached to them, and this library bypasses all that. While .toUUID() generates technically valid UUIDs it does not create a UUID which is suitable for production (even if a random number is passed).
+
+.toUUID() is to be used in automated testing or to generate a repeatable set of human-readable UUIDs.
 
 # How .toUUID() works
 
