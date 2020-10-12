@@ -9,6 +9,9 @@ import java.util.stream.IntStream;
 
 public class UUIDs {
 
+    private UUIDs() {
+    }
+
     /**
      * Converts an int to a UUID
      * <p>

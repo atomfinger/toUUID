@@ -2,10 +2,6 @@ package io.github.atomfinger.touuid
 
 import java.util.*
 
-private const val totalLength = 12
-private const val paddingCharacter = '0'
-
-
 /**
  * Converts the extended integer to a UUID
  *
