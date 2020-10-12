@@ -24,7 +24,7 @@ fun Int.toUUID(): UUID = UUIDs.toUUID(this)
  * Converts a collection of integers to a list of UUID
  *
  *  EXAMPLE:
- *   listOf(1, 2, 3).toUUID()
+ *   listOf(1, 2, 3).toUUIDs()
  *
  *  @return List of UUIDs
  */
@@ -49,7 +49,7 @@ fun uuids() = sequence {
  * Converts a range of integers to UUIDs
  *
  * EXAMPLE:
- *  (1..5).toUUID()
+ *  (1..5).toUUIDs()
  *
  * WARNING:
  * While this function technically allows you to generate a couple of billions of UUIDs,
