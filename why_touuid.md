@@ -22,7 +22,7 @@
     - [Random UUIDs can help to spot errors which don’t come up during regular testing](#random-uuids-can-help-to-spot-errors-which-dont-come-up-during-regular-testing)
     - [UUIDs are supposed to be random; it doesn’t make sense that they should be sequential](#uuids-are-supposed-to-be-random-it-doesnt-make-sense-that-they-should-be-sequential)
     - [Random values can discover unexpected errors in your code. This library makes automated tests less valuable](#random-values-can-discover-unexpected-errors-in-your-code-this-library-makes-automated-tests-less-valuable)
-    - [Why not use UUIDs.of()/[insert naming convention] rather than UUIDS.toUUID()?](#why-not-use-uuidsofinsert-naming-convention-rather-than-uuidstouuid)
+    - [Why not use UUIDs.of()/[insert naming convention]?](#why-not-use-uuidsofinsert-naming-convention)
     - [What if I mock the behaviour of UUID.randomUUID()?](#what-if-i-mock-the-behaviour-of-uuidrandomuuid)
 
 ## Introduction
@@ -584,7 +584,7 @@ For the vast majority of code, the only time a randomly generated UUID in tests 
 
 The point is, random vs static values doesn't matter if one doesn't apply logic to the values. If there's nothing that transforms UUIDs or does some calculations based on UUIDs in the source code, then it doesn't matter what specific value that a UUID holds. It does not matter whether it was hardcoded or not.
 
-### Why not use UUIDs.of()/[insert naming convention] rather than UUIDS.toUUID()?
+### Why not use UUIDs.of()/[insert naming convention]?
 
 Java has a bunch of different patterns when it comes to naming:
 
