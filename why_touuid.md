@@ -2,9 +2,10 @@
 
 ## Table of contents
 
+- [Why .toUUID()](#why-touuid)
+  - [Table of contents](#table-of-contents)
   - [Introduction](#introduction)
     - [Testing is contextual](#testing-is-contextual)
-    - [Testing is subjective](#testing-is-subjective)
     - [The setup](#the-setup)
       - [What we're writing tests for](#what-were-writing-tests-for)
   - [.toUUID() vs UUID.randomUUID()](#touuid-vs-uuidrandomuuid)
@@ -24,6 +25,7 @@
     - [Random values can discover unexpected errors in your code. This library makes automated tests less valuable](#random-values-can-discover-unexpected-errors-in-your-code-this-library-makes-automated-tests-less-valuable)
     - [Why not use UUIDs.of()/[insert naming convention]?](#why-not-use-uuidsofinsert-naming-convention)
     - [What if I mock the behaviour of UUID.randomUUID()?](#what-if-i-mock-the-behaviour-of-uuidrandomuuid)
+  - [Conclusions](#conclusions)
 
 ## Introduction
 
@@ -34,16 +36,6 @@ The goal of this document is to explain how .toUUID() brings value and where it 
 ### Testing is contextual
 
 Before going into concrete examples, we should probably discuss the fact that there are many wildly different views on how to conduct automated testing, and on what is appropriate or not. The point of .toUUID() isn’t to explicitly favour one over the other, rather be a tool available to developers which sees a use case for it in their test portfolio. It might be in unit, integration or system testing; or it might be in extensive E2E tests.
-
-### Testing is subjective
-
-We have books like "[Clean Code](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882/ref=sr_1_1?crid=1EI7AE1WK668R&dchild=1&keywords=clean+code&qid=1602681991&s=books&sprefix=clean+code%2Cstripbooks-intl-ship%2C249&sr=1-1)", "[The art of unit testing](https://www.amazon.com/Art-Unit-Testing-examples/dp/1617290890)" and "[Working effectively with legacy code](https://www.amazon.com/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052/ref=sr_1_1?dchild=1&keywords=How+to+work+effectively+with+legacy+code&qid=1602682014&s=books&sr=1-1)", all of which has different views on what a good unit test looks and what is considered good or bad patterns.
-
-- Some people want to have exact values in their tests, while others might accept implied or generated values.
-- Some people spend much time on naming test variables correctly, while others don't see the reason to (since it is not production code).
-- Some people want to test every little piece of code, while others settle with a few high-level functional tests (or even no automated tests)
-
-The point is that people have different values when it comes to automated testing, and there isn't a single correct way of doing it.
 
 ### The setup
 
@@ -148,7 +140,7 @@ Student result = studentService.findStudent(student.studentId);
 assertThat(result).isEqualTo(student);
 ```
 
-alternatively some might have written the test above as such:
+alternatively, some might have written the test above as such:
 
 ```java
 UUID studentId = UUID.randomUUID();
@@ -158,7 +150,7 @@ Student result = studentService.findStudent(studentId);
 assertThat(result).isEqualTo(student);
 ```
 
-The test above we see thata random UUID is used, and it is managed. If we take a look at the same test written with .toUUID():
+The test above we see that a random UUID is generated and held as a variable. If we take a look at the same test written with .toUUID():
 
 ```java
 Student student = new Student(toUUID(1), "Harvard", "CS");
@@ -177,9 +169,7 @@ Student result = studentService.findStudent(studentId);
 assertThat(result).isEqualTo(student);
 ```
 
-These scenarios show that the choice mostly comes down to preference. Some people like to work with concrete values, others prefer the random value. Either approach is equally valid and if this is the only use case, then .toUUID() migth not be worth it.
-
-However, it is also true that .toUUID() doesn’t make the code objectively worse either. The tests are very similar in either approach.
+These scenarios show that there's no direct benefit of .toUUID() vs a random UUID. Neither approach is meaningfully more complex than the other. Some might prefer calling the `mockedStudentDao` with an actual value, but that is subjective. If the entire use case is just simple tests, like the ones above, then .toUUID() is more an aesthetic choice rather than a tool which adds much value.
 
 ### Tests working with lists of data
 
@@ -224,9 +214,9 @@ List<Student> result = studentService.findStudentBySchoolAndCourse("Harvard", "C
 assertThat(result).containsExactlyInAnyOrderElementsOf(csStudents);
 ```
 
-Neither of these two tests is majorly different in implementation and mostly comes down to preference. While the .toUUID() implementation has its test data nicely aligned, we will see later that this is not the primary benefit of .toUUID(), and there are instances where we want to split up our the way that it has been done in our random test.
+Neither of these two tests is majorly different in implementation and mostly comes down to preference. While the .toUUID() implementation has its test data nicely aligned, we will see later that this is not the primary benefit of .toUUID(), and there are instances where we want to separate the input and expected output.
 
-The bigger advantage the .toUUID() implementation has over the random UUID implementation is the output in case a test fails. Consider this output from the .toUUID() implementation:
+The primary benefit .toUUID() has over random UUIDs is that it makes it easier to map error messages back to the source. Consider this output from the .toUUID() implementation:
 
 ```
 Expecting:
@@ -262,7 +252,7 @@ but the following elements were unexpected:
 
 Let's for a moment appreciate that this test is tiny in scope and had only a single element that should be excluded. If this test fails, it is straightforward to identify which piece of data that is wrong. Consider how this would look if the list contained 10/20/30/etc students rather than just four. Ask yourself which approach makes it easier to identify the source of the error.
 
-The reason we don't assert on the UUIDs directly in our random UUID test is that they are random. It doesn't make sense to assert on random values as they cannot be mapped back to the source (in any meaningful way). We know that our implementation of `listStudentsBySchool` filters on a list provided by `StudentDao`, so in this scenario, we only care whether or not the correct object has been excluded. What we see with the previous tests is that we are forced to asserting on other values, often whole objects, where one identifier would be enough when dealing with random values; alternatively save the state of these random values. Both approaches are unnecessary in this situation.
+The reason we don't assert on the UUIDs directly in our random UUID test is that we can't do so in any meaningful way. It doesn't make sense to assert on random values as they cannot be mapped back to the source if something goes wrong, so we're forced to match the whole object. We know that our implementation of `listStudentsBySchool` filters on a list provided by `StudentDao`, so in this scenario, we only care whether or not the correct object has been excluded. What we see with the previous tests is that we are forced to asserting on other values, often whole objects, where one identifier would be enough when dealing with random values; alternatively save the state of these random values. Both approaches are unnecessary in this situation.
 
 The more complex dataset, models and logic are, the more difficult it becomes to identify which exact object that is causing the issue. Using .toUUID() can make this process easier and scales better as complexity grows.
 
@@ -301,11 +291,11 @@ but the following elements were unexpected:
   <[Student(studentId=00000000-0000-0000-0000-000000000004, school=Harvard, course=Fine art, graduationYear=1994)]>
 ```
 
-The main difference now is that `studentId` isn't just wasting space; instead, the id is something we can use to identify which exact student that is wrongly included or missing. To find the original piece of data we only need to look at the `studentId`, rather than finding something in the list of other properties which can be used to identify a student (Do keep in mind that this model only holds four properties. In real life scenario there's often substantially more properties to keep track of)..
+The main difference now is that `studentId` isn't just wasting space; instead, the `studentId` is something we can use to identify which exact student that is wrongly included or missing. To find the original piece of data, we only need to look at the `studentId`, rather than finding something in the list of other properties which can be used to identify a student. While our `Student` class only has four properties, consider for a moment that entities often has substantially more. When writing tests like this, the main benefit of .toUUID() is that the first field is a deterministic value which can be used to identify the source.
 
 ### Tests which works with datasets
 
-As we saw in the previous section, .toUUID() can make it easier to deal with a situation where tradition non-deterministic values force restrictions on us. Let's shift gear and have a look at integration testing, specifically for the database layer. In this scenario, we have been tasked with implementing tests for the `listStudentsBySchoolOrderedByGraduationYear` method.
+If there is one lesson to take from the previous section, it is that deterministic IDs allow us to identify the source of the data using the ID. This will also be one of the main benefits when working with larger datasets as well. In this scenario, we will have a look at integration tests, specifically for the database layer. In this scenario, we have been tasked with implementing tests for the `listStudentsBySchoolOrderedByGraduationYear` method.
 
 To make such a test work we must then insert a dataset in some way. There's essentially two ways of inserting dataset into a database for test purposes:
 
@@ -358,11 +348,11 @@ but the following element(s) were unexpected:
   <["Yale"]>
 ```
 
-We are lucky that we are dealing with such a simple model for this example, as that helps us to identify that the second record is the odd one out, but do keep in mind that reading these error messages gets more complicated the bigger a model is. The first error message might give us a decent amount of information about what went wrong, but I’d argue that it is unnecessarily difficult to identify which record was the perpetrator intuitively. The critical, identifiable, bits of information is hidden in the middle of the error. Such unintuitive messages might be okay for this test, but consider that most systems have more functionality and tests than our example, so this problem increases as the number of tests increases.
+We are lucky that we are dealing with such a simple model for this example, as that helps us to identify that the second record is the odd one out, but do keep in mind that reading these error messages gets more complicated the bigger a model is. The first error message might give us a decent amount of information about what went wrong, but I’d argue that it is unnecessarily difficult to identify which record is the one that is causing issues. The critical, identifiable, bits of information is hidden in the middle of the error under the `school` property.  Such unintuitive messages might be okay for this test, but consider that most systems have more functionality and tests than our example, so this problem will only get worse as a system grows in size and complexity.
 
-The second error message is much more problematic. Since we are, essentially, doing multiple asserts in a single test, it means that this error will only show up when the number of items asserts passes. This means that we don’t have the printout of the first test if this error shows up. It can be challenging to figure out which exact student was wrongly returned based on the second error alone, significantly when datasets grow bigger.
+The second error message is much more problematic. Since we are, essentially, doing multiple asserts in a single test, it means that this error will only show up when the number of items asserts passes. This means that we don’t have the printout of the first test if this error shows up. It can be challenging to figure out which exact student was wrongly returned based on the second error alone, significantly more difficult when datasets grow bigger.
 
-Another thing to consider is that `listStudentsBySchoolOrderedByGraduationYear` also has a specific order to it, `GraduationYear`. This is also something we should verify in our tests:
+Another thing to consider is that `listStudentsBySchoolOrderedByGraduationYear` also has a specific order to it, `GraduationYear`. This is also something we must verify. In this scenario, we're forced to write this requirement as a separate test:
 
 ```java
 List<Student> result = studentDao.listStudentsBySchoolOrderedByGraduationYear("Harvard");
@@ -380,9 +370,9 @@ whereas expected element was:
   <1994>
 ```
 
-With this error we run into the same challenge as where we checked the school. It can be difficult to trace the error back to where the exact students which is either missing or wrongly included.
+With this error, we run into the same challenge as to where we checked the school. It can be challenging to trace the error back to where the exact students who are either missing or wrongly included.
 
-When using .toUUID(), we can easily encapsulate both of these test cases into a single one:
+When using .toUUID(), we can easily encapsulate both of these test cases into a single test:
 
 ```java
 List<Student> result = studentDao.listStudentsBySchoolOrderedByGraduationYear("Harvard");
@@ -471,19 +461,22 @@ Comparators used:
 
 This approach might seem fair for smaller models, like the one used in this example, but it doesn’t scale that well. Another issue with this approach is that it requires more code to achieve similar results. Every time we add a new student to our dataset, which changes the result for this test means that we must also hardcode a new student in our tests.
 
-Even when we have managed to match our .toUUID() in terms of functionality, it is still harder to trace the error back to specific records. With .toUUID() a developer needs to remember a particular number to identify a record, but with random UUIDs then a developer must remember a sequence of specific number and characters. While a minor point it is still easier to think "Oh, record 42" and find a correct record based on that rather than "find a record with an id that ends with 199d04".
+Another thing to consider is that the test works with two different sets of UUIDs. Consider this line:
+```
+but some elements were not found:
+  <[Student(studentId=44ab4f0f-f816-4a2b-bff0-d9bd58199d04, school=Harvard, course=CS, graduationYear=1994)]>
+```
 
-Whether .toUUID() is worth it over random UUIDs really depends on:
+The UUID presented in the message above doesn't exist in our dataset. It quickly becomes confusing when some IDs are present in the dataset, while others are randomly generated.
 
-- How large models are: At some point, we don’t want to verify every field for every database transaction. We should have at least one test which confirms that the models are mapped correctly between the system model and the database, but when we have verified that once doesn’t mean we have to prove it every time afterwards, as that might take up much space and bog down our tests with object initialization. Another added benefit is that .toUUID() can make it easier to point to the same record that is causing issues, making it easier for the developers to identify what went wrong without overloading the developer with too much information.
-- How large the datasets of the systems are: .toUUID() can makes dealing with more extensive data/result sets much more manageable.
+There's an argument to why we might want to assert on whole objects rather than a specific field, and .toUUID() doesn't prevent developers from doing so. In those instances, just like with our previous section's list test, .toUUID() makes it easier to identify the source record while the exact implementation looks very similar to the one implemented using random UUIDs.
 
 #### Value proposition of .toUUID() vs random UUIDs
 
 - .toUUID() makes it easier to identify the records that triggered the test fault
 - .toUUID() gives developers other ways of expressing their tests
 - .toUUID() allows developers to write tests without holding a state of non-deterministic values
-- .toUUID() is shorter when testing against a dataset
+- .toUUID() can cut down on the amount of code required when testing against a dataset
 
 ## .toUUID() vs new UUID(...)
 
@@ -576,13 +569,13 @@ Yes, but only if there's logic tied to the exact value of a UUID. The lifespan o
 - Being passed to the database to create, save, update or read an entity (or as a list of entities)
 - Being written to file or returned from service to serve as an identifier for an entity
 
-The long and short of it is that UUIDs tends to be passed around and very little else.
+The long and short of it is that UUIDs tend to be passed around, and its value rarely gets touched directly.
 
 We might connect entities using UUIDs, but there is often very little logic tied to the specific value itself. This means that most code supports the whole range of UUIDs existing UUIDs, at which point it doesn't matter what value a given UUID has generated. In regular code, one will never be able to uncover an error due to a randomly generated UUID.
 
-For the vast majority of code, the only time a randomly generated UUID in tests can fail is when there's specific logic dealing with the UUID value (at which point .toUUID() isn't suitable), or when it tries to access an entity which doesn't exist (which often indicates that there's some error with the setup).
+For the vast majority of code, the only time a randomly generated UUID in tests can fail is when there's specific logic dealing with the UUID value (at which point .toUUID() isn't suitable), or when it tries to access an entity which doesn't exist.
 
-The point is, random vs static values doesn't matter if one doesn't apply logic to the values. If there's nothing that transforms UUIDs or does some calculations based on UUIDs in the source code, then it doesn't matter what specific value that a UUID holds. It does not matter whether it was hardcoded or not.
+The point is, random vs static values doesn't matter if one doesn't apply logic to the values. If there's nothing that transforms UUIDs or does some calculations based on UUIDs, then it doesn't matter what specific value that a UUID holds. It does not matter whether it was hardcoded or not.
 
 ### Why not use UUIDs.of()/[insert naming convention]?
 
@@ -627,3 +620,12 @@ The added benefit is that it is clear when we want to generate a single UUID, an
 ### What if I mock the behaviour of UUID.randomUUID()?
 
 While that would work, it is essentially just moving the issue. The UUID still must be created in some way. Consider that `.randomUUID()` is a static method, which means that one has to use a very invasive type of mocking to make it happen, like Jmockit or PowerMock. While these types of mocking libraries are exceptional in their own right, they do break encapsulation entirely as it rewrites the bytecode on the fly. This might be acceptable to some; to others, it might not be. I don't think it is worth overriding `.randomUUID()` as there are plenty of more straightforward and less invasive options such as `.toUUID()`, `randomUUID()` and static UUIDs.
+
+
+## Conclusions
+
+One of the goals of .toUUID() is to be the one-stop-shop for UUID generation of deterministic UUIDs. Some find the underlying purpose of .toUUID() to be flawed, but throughout this text, we have seen some clear benefits of deterministic values in the context of automated testing.
+
+If you still don't see the value of .toUUID(), then that is fine. This library isn't what defines you as a good or a bad developer; instead, .toUUID() is a tool which some might want to use to write, what they deem to be, cleaner tests. 
+
+If you see a use-case for .toUUID(), then great! If you have any issues or suggestions for improvements, [do get in touch](jmgundersen.net)!
