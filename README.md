@@ -16,8 +16,8 @@ _A tiny library for generating UUIDs in automated tests for Java and Kotlin_
   - [Java](#java)
   - [Kotlin](#kotlin)
 - [Why .toUUID()?](#why-touuid)
-  - [:warning: Never use .toUUID() in production code :warning:](#warning-never-use-touuid-in-production-code-warning)
 - [How .toUUID() works](#how-touuid-works)
+  - [:warning: Never use .toUUID() in production code :warning:](#warning-never-use-touuid-in-production-code-warning)
 - [Demo projects](#demo-projects)
 - [How to build](#how-to-build)
 - [Contact](#contact)
@@ -159,31 +159,7 @@ uuids.forEach { println(it.toString()) }
 
 # Why .toUUID()?
 
-Developers care about clean code, and automated tests are no exceptions. We should apply the same professional attitudes to our automated tests as we do our production code.
-One of the commonly accepted principles is that unit tests should be easy to read and understand. Having UUIDs with hardcoded values such as `1b1d3a74-748a-4394-a9fb-88145de16d31` breaks the flow for the reader and makes the test harder to understand the code.
-
-It is effortless to generate a random UUID in Java and Kotlin, but it is harder to generate a simple one, such as:  
-`00000000-0000-0000-0000-000000000001`
-
-To generate a simple UUID like the one above, traditionally, we must write something like this:
-
-```java
-UUID simpleUuid = UUID.fromString("00000000-0000-0000-0000-000000000001");
-```
-
-The issue with generating UUIDs this way is:
-
-- It is ugly
-- It harms readability in multiple ways
-- It is tedious generating more than one UUID
-
-.toUUID() attempts to mitigate this problem by being able to generate simple UUIDs based on integers.
-
-## :warning: Never use .toUUID() in production code :warning:
-
-.toUUID() is not a replacement for how one normally generates UUIDs in production code. There are a [few versions of UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Versions) which all have different algorithms attached to them, and this library bypasses all that. While .toUUID() generates technically valid UUIDs it does not create a UUID which is suitable for production (even if a random number is passed).
-
-.toUUID() is to be used in automated testing or to generate a repeatable set of human-readable UUIDs.
+[Check out the writeup on why toUUID() is worth it](why_touuid.md)
 
 # How .toUUID() works
 
@@ -202,7 +178,11 @@ Here's some more examples:
 |100|`00000000-0000-0000-0000-000000000100`|
 |100000|`00000000-0000-0000-0000-000000100000`|
 
+## :warning: Never use .toUUID() in production code :warning:
 
+.toUUID() is not a replacement for how one normally generates UUIDs in production code. There are a [few versions of UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Versions) which all have different algorithms attached to them, and this library bypasses all that. While .toUUID() generates technically valid UUIDs it does not create a UUID which is suitable for production (even if a random number is passed).
+
+.toUUID() is to be used in automated testing or to generate a repeatable set of human-readable UUIDs.
 
 # Demo projects
 
