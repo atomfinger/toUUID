@@ -15,7 +15,7 @@ _A tiny library for generating UUIDs in automated tests for Java and Kotlin_
 - [Examples](#examples)
   * [Java](#java)
   * [Kotlin](#kotlin)
-- [Why toUUID?](#why-touuid-)
+- [Why toUUID?](#why-touuid)
 - [How toUUID works](#how-touuid-works)
   * [:warning: Never use toUUID in production code :warning:](#-warning--never-use-touuid-in-production-code--warning-)
 - [Demo projects](#demo-projects)
