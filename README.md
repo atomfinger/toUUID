@@ -109,7 +109,7 @@ uuids.forEach((it) -> System.out.println(it.toString()));
 
 Kotlin has access to all the feature Java has, but also has the addition of extension functions.
 
-Generate based on an integers:
+Generate based on an integer:
 
 ```kotlin
 val uuid = 1.toUuid()
@@ -121,7 +121,7 @@ println(uuid.toString())
 Generate from a list of integers:
 
 ```kotlin
-val uuids = listOf(1, 2, 3, 4, 5).toUUIDs()
+val uuids = listOf(1, 2, 3, 4, 5).toUuids()
 uuids.forEach { println(it.toString()) }
 //Output:
 //00000000-0000-0000-0000-000000000001
@@ -134,7 +134,7 @@ uuids.forEach { println(it.toString()) }
 Generate based on a range of integers:
 
 ```kotlin
-val uuids = (1..5).toUUIDs()
+val uuids = (1..5).toUuids()
 uuids.forEach { println(it.toString()) }
 //Output:
 //00000000-0000-0000-0000-000000000001
