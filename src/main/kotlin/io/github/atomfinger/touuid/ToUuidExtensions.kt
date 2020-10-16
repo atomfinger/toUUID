@@ -18,7 +18,7 @@ import java.util.*
  *
  * @return Converted UUID
  */
-fun Int.toUUID(): UUID = UUIDs.toUUID(this)
+fun Int.toUuid(): UUID = UUIDs.toUUID(this)
 
 /**
  * Converts a collection of integers to a list of UUID
@@ -28,7 +28,7 @@ fun Int.toUUID(): UUID = UUIDs.toUUID(this)
  *
  *  @return List of UUIDs
  */
-fun Collection<Int>.toUUIDs(): List<UUID> = this.map { it.toUUID() }
+fun Collection<Int>.toUuids(): List<UUID> = this.map { it.toUuid() }
 
 /**
  * Yields as many UUIDs as needed.
@@ -42,7 +42,7 @@ fun Collection<Int>.toUUIDs(): List<UUID> = this.map { it.toUUID() }
  *
  */
 fun uuids() = sequence {
-    (1..Int.MAX_VALUE).forEach { i -> yield(i.toUUID()) }
+    (1..Int.MAX_VALUE).forEach { i -> yield(i.toUuid()) }
 }
 
 /**
@@ -57,4 +57,4 @@ fun uuids() = sequence {
  *
  *  @return List of UUIDs
  */
-fun IntRange.toUUIDs(): List<UUID> = this.toList().toUUIDs()
+fun IntRange.toUuids(): List<UUID> = this.toList().toUuids()
