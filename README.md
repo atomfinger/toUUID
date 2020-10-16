@@ -2,7 +2,7 @@
 <img src="/images/logo-medium.png" width="400">
 
 ![Main CI](https://github.com/atomfinger/toUUID/workflows/Main%20CI/badge.svg)
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.atomfinger/atomfinger-touuid?color=dark-green&logoHeight=50)](https://search.maven.org/artifact/io.github.atomfinger/atomfinger-touuid/1.0.0/jar)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.atomfinger/atomfinger-touuid?color=dark-green&logoHeight=50)](https://search.maven.org/artifact/io.github.atomfinger/atomfinger-touuid/1.0.1/jar)
 
 _A tiny library for generating UUIDs in automated tests for Java and Kotlin_
 
@@ -30,7 +30,7 @@ _A tiny library for generating UUIDs in automated tests for Java and Kotlin_
 <dependency>
     <groupId>io.github.atomfinger</groupId>
     <artifactId>atomfinger-touuid</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <scope>test</scope>
 </dependency>
 ```
@@ -40,7 +40,7 @@ _A tiny library for generating UUIDs in automated tests for Java and Kotlin_
 (Using the Maven Central Repository)
 
 ```yml
-testCompile group: 'io.github.atomfinger', name: 'atomfinger-touuid', version: '1.0.0'
+testCompile group: 'io.github.atomfinger', name: 'atomfinger-touuid', version: '1.0.1'
 ```
 
 # Examples
