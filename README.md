@@ -47,6 +47,8 @@ testCompile group: 'io.github.atomfinger', name: 'atomfinger-touuid', version: '
 
 ## Java
 
+THIS IS A TEST CHANGE
+
 toUUID is first and foremost a Kotlin project. Still, one of the goals was to keep it free for any unnecessary dependencies, which is why Java users should use the [UUIDs class](src/main/java/io/github/atomfinger/touuid/UUIDs.java) to avoid having to deal with any extra dependencies.
 
 UUID from a single integer:
