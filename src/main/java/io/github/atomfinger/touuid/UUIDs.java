@@ -9,6 +9,9 @@ import java.util.stream.IntStream;
 
 public class UUIDs {
 
+    private UUIDs() {
+    }
+
     /**
      * Converts an int to a UUID
      * <p>
@@ -21,7 +24,7 @@ public class UUIDs {
      * -1 is converted to "00000000-0000-0000-0000-000000000000"
      * <p>
      * Example:
-     * UUIDs.fromInt(1);
+     * UUIDs.toUUID(1);
      *
      * @param number: The int to convert
      * @return the generated UUID
@@ -35,7 +38,7 @@ public class UUIDs {
      * Generates a list of UUIDs based on int inputs
      * <p>
      * Example:
-     * UUIDs.fromInts(1, 2, 3);
+     * UUIDs.toUUIDs(1, 2, 3);
      *
      * @param positiveNumbers: The numbers to convert
      * @return List of generated UUIDs
@@ -48,7 +51,7 @@ public class UUIDs {
      * Generates a list of UUIDs based on a collection of integers
      * <p>
      * Example:
-     * UUIDs.fromInts(Arrays.asList(1, 2, 3));
+     * UUIDs.toUUIDs(Arrays.asList(1, 2, 3));
      *
      * @param integers: The numbers to convert
      * @return List of generated UUIDs
@@ -61,7 +64,7 @@ public class UUIDs {
      * Generates a list of UUIDs based on an inclusive range of ints
      * <p>
      * Example:
-     * UUIDs.fromRange(1, 3); //Will generate 3 UUIDs
+     * UUIDs.toUUIDsFromRange(1, 3); //Will generate 3 UUIDs
      *
      * @param startInclusive: Start of range
      * @param endInclusive:   End of range
