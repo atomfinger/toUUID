@@ -42,7 +42,7 @@
         <java.version>1.8</java.version>
         <javadoc.plugin.version>3.3.0</javadoc.plugin.version>
         <source.plugin.version>3.2.1</source.plugin.version>
-        <maven.compiler.version>3.1</maven.compiler.version>
+        <maven.compiler.version>3.8.1</maven.compiler.version>
         <gpg.plugin.version>1.6</gpg.plugin.version>
         <version.nexus-staging.plugin>1.6.8</version.nexus-staging.plugin>
     </properties>
